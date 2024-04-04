@@ -2,6 +2,7 @@ package com.possacode.digitalbanking.sevices.impl;
 
 
 import com.possacode.digitalbanking.dtO.TransactionSumDetails;
+import com.possacode.digitalbanking.models.TransactionType;
 import com.possacode.digitalbanking.repository.TransactionRepository;
 import com.possacode.digitalbanking.sevices.StatisticsService;
 import lombok.RequiredArgsConstructor;
@@ -29,11 +30,11 @@ public class StatisticsServiceImpl implements StatisticsService {
 
     @Override
     public BigDecimal highestTransfer(Integer userId) {
-        return null;
+        return transactionRepository.findHighestAmountByTransactionType(userId, TransactionType.TRANSFERT);
     }
 
     @Override
     public BigDecimal highestDeposit(Integer userId) {
-        return null;
+        return transactionRepository.findHighestAmountByTransactionType(userId, TransactionType.DEPOT);
     }
 }
